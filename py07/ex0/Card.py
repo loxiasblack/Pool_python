@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+
+
 class Card(ABC):
     """
     Class that represent the blueprint off all Card objects
@@ -8,6 +10,7 @@ class Card(ABC):
         cost: Integer the number of mana to use the Card
         rarity: String representing the rarity of the Card
     """
+
     def __init__(self, name: str, cost: int, rarity: str) -> None:
         """
         Initialisation for the instance of the object with args
@@ -19,12 +22,11 @@ class Card(ABC):
         self.name = name
         self.cost = cost
         self.rarity = rarity
-    
-    
+
     def play(self, game_state: dict):
         """ABSTRACT METHOD"""
         pass
-    
+
     abstractmethod(play)
 
     def get_card_info(self) -> dict:
@@ -34,7 +36,7 @@ class Card(ABC):
             dictionary about card info
         """
         if self.__class__.__name__ == "CreatureCard":
-            self.type = 'Creature'
+            self.type = "Creature"
 
         return self.__dict__
 
@@ -45,7 +47,7 @@ class Card(ABC):
         args:
             available_mana: integer showing the level of mana
         return:
-            True if available mana greater or equal to the card cost 
+            True if available mana greater or equal to the card cost
         """
         if available_mana >= self.cost:
             return True
